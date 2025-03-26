@@ -1,0 +1,78 @@
+// .pay{
+//     width: 80%;
+//     margin: 0 auto;
+//     padding: 20px;
+//     border: 1px solid #ccc;
+//     border-radius: 4px;
+//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//     background-color: #fff;
+    
+    
+// }
+// /* Payment Button Styles */
+// .pay-button {
+//     width: 100%;
+//     padding: 12px;
+//     background-color: #4CAF50; /* Green */
+//     color: white;
+//     font-size: 18px;
+//     font-weight: bold;
+//     border: none;
+//     border-radius: 8px;
+//     cursor: pointer;
+//     transition: background 0.3s, transform 0.2s;
+//   }
+  
+//   .pay-button:hover {
+//     background-color: #45a049;
+//   }
+  
+//   .pay-button:active {
+//     background-color: #3e8e41;
+//     transform: scale(0.98);
+//   }
+
+
+
+/* Payment Container */
+.pay {
+    width: 100%;
+    max-width: 600px;
+    margin: 200px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Title Styling */
+  .pay h2 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Payment Button */
+  .pay-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  .pay-button:hover {
+    background-color: #45a049;
+  }
+  
+  .pay-button:active {
+    background-color: #3e8e41;
+    transform: scale(.98);
+  }
+  
