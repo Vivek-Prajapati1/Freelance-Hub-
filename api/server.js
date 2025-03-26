@@ -20,7 +20,6 @@ const app = express();
 dotenv.config();
 mongoose.set('strictQuery', true);
 
-//middleware
 //frontend port number
 app.use(cors({
     origin: "http://localhost:3000",
