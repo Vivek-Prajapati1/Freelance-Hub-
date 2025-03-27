@@ -105,7 +105,7 @@ const Gig = () => {
                                 </div>
                                 <div className="item">
                                     <span className="title">Member since</span>
-                                    <span className="desc">Aug 2022</span>
+                                    <span className="desc">March 2025</span>
                                 </div>
                                 <div className="item">
                                     <span className="title">Avg. response time</span>
