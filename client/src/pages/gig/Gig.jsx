@@ -129,7 +129,7 @@ const Gig = () => {
                 <div className="right">
                     <div className="price">
                         <h3>{data.sortTitle}</h3>
-                        <h2>${data.price}</h2>
+                        <h2>&#x20B9;{data.price}</h2>
                     </div>
                     <p>{data.sortDesc}</p>
                     <div className="details">
@@ -153,7 +153,7 @@ const Gig = () => {
                         <button onClick={handleEdit} className="edit-button">Edit Gig</button>
                     ) : (
                         <Link to={`/pay/${id}`}>
-                            <button>Continue</button>
+                            <button class= "btn">Continue</button>
                         </Link>
                     )}
                 </div>
