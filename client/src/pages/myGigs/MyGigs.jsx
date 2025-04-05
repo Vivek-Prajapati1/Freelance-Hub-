@@ -66,18 +66,18 @@ function MyGigs() {
                     <img className="image" src={gig.cover} alt="" />
                   </td>
                   <td>{gig.title}</td>
-                  <td>${gig.price}</td>
+                  <td> &#x20B9;{gig.price}</td>
                   <td>{gig.sales}</td>
                   <td className="action">
                     <Link to={`/edit-gig/${gig._id}`} className="edit">
                       <img src="/images/edit.png" alt="Edit" />
                     </Link>
-                    <img
+                    {/* <img
                       className="delete"
                       src="/images/delete.png"
                       alt="Delete"
                       onClick={() => handleDelete(gig._id)}
-                    />
+                    /> */}
                   </td>
                 </tr>
               ))}

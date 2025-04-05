@@ -71,7 +71,7 @@ const Navbar = () => {
                     </div>
                 </div>}
                 <div className="links">
-                    <span onClick={()=>navigate('/becomeseller')}>fiverr Business</span>
+                    <span onClick={()=>navigate('/becomeseller')}>freelance Business</span>
                     <span className="tooltip">Explore
                         <span className="tooltiptext">
                             <div className="col">
@@ -128,7 +128,7 @@ const Navbar = () => {
                         <span onClick={() => navigate('/becomeSeller')}>Become a Seller</span>
                     )}
                     {currentUser && currentUser.isSeller && (
-                        <span onClick={() => navigate('/becomeBuyer')}>Become a Buyer</span>
+                        <span onClick={() => navigate('/register')}>Become a Buyer</span>
                     )}
                     {currentUser && (
                         <div className="user" onClick={() => setopen(!open)}>

@@ -143,7 +143,7 @@ const Home = () => {
             <div className="features dark">
                 <div className="container">
                     <div className="item">
-                        <h1>fiverr <em><span style={{ fontWeight: '300' }}>business.</span></em></h1>
+                        <h1>freelance <em><span style={{ fontWeight: '300' }}>business.</span></em></h1>
                         <h1>A solution built for <em>business</em></h1>
                         <p >Upgrade to a curated experience to access vetted talent and exclusive tools</p>
                         <div className="title">
@@ -172,12 +172,12 @@ const Home = () => {
             <div className="logo_maker">
                 <div className="items">
                     <div className="left">
-                        <h1>fiverr <span>logomaker.</span></h1>
+                        <h1>freelance <span>logomaker.</span></h1>
                         <p className="first_para">Make an incredible logo<br></br>
                             <em className="first_para_em"> in minutes</em>
                         </p>
                         <p className="second_para">Pre-designed by top talent. Just add your touch.</p>
-                        <button className="logo_button"><strong>Try Fiverr Logo Maker</strong></button>
+                        <button className="logo_button"><strong>Try Freelance Logo Maker</strong></button>
                     </div>
                     <div className="right">
                         <img src="/images/logomaker.webp" alt="" />

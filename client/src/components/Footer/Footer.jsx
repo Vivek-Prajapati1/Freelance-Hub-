@@ -1,102 +1,126 @@
 import React from "react";
 import './footer.scss';
+
 const Footer = () => {
-    return ([
-        <div className="footer">
+    return (
+        <div className="footer" key="footer-main">
             <div className="container">
                 <div className="top">
                     <div className="item">
                         <h2>Categories</h2>
-                        <span>Graphics & Design</span>
-                        <span> Digital Marketing</span>
-                        <span>Writing & Translation</span>
-                        <span>Video & Animation</span>
-                        <span> Music & Audio</span>
-                        <span> Programming & Tech</span>
-                        <span> Data</span>
-                        <span>Business</span>
-                        <span>Lifestyle</span>
-                        <span>Photography</span>
-                        <span> End-to-End Projects</span>
-                        <span>Sitemap</span>
+                        {[
+                            "Graphics & Design",
+                            "Digital Marketing",
+                            "Writing & Translation",
+                            "Video & Animation",
+                            "Music & Audio",
+                            "Programming & Tech",
+                            "Data",
+                            "Business",
+                            "Lifestyle",
+                            "Photography",
+                            "End-to-End Projects",
+                            "Sitemap"
+                        ].map((text, index) => (
+                            <span key={`cat-${index}`}>{text}</span>
+                        ))}
                     </div>
                     <div className="item">
                         <h2>About</h2>
-                        <span>Careers</span>
-                        <span>Press & News</span>
-                        <span>Partnerships</span>
-                        <span>Privacy Policy</span>
-                        <span>Terms of Service</span>
-                        <span> Intellectual Property Claims</span>
-                        <span>Investor Relations</span>
+                        {[
+                            "Careers",
+                            "Press & News",
+                            "Partnerships",
+                            "Privacy Policy",
+                            "Terms of Service",
+                            "Intellectual Property Claims",
+                            "Investor Relations"
+                        ].map((text, index) => (
+                            <span key={`about-${index}`}>{text}</span>
+                        ))}
                     </div>
                     <div className="item">
                         <h2>Support</h2>
-                        <span>Help & Support</span>
-                        <span>Trust & Safety</span>
-                        <span>Selling on Fiverr</span>
-                        <span> Buying on Fiverr</span>
-                        <span>Fiverr Guides</span>
+                        {[
+                            "Help & Support",
+                            "Trust & Safety",
+                            "Selling on Freelance",
+                            "Buying on Freelance",
+                            "Freelance Guides"
+                        ].map((text, index) => (
+                            <span key={`support-${index}`}>{text}</span>
+                        ))}
                     </div>
                     <div className="item">
                         <h2>Community</h2>
-                        <span>Customer Success Stories</span>
-                        <span>Community Hub</span>
-                        <span>Forum</span>
-                        <span>Events</span>
-                        <span> Blog</span>
-                        <span>Influencers</span>
-                        <span>Affiliates</span>
-                        <span>Podcast</span>
-                        <span> Invite a Friend</span>
-                        <span> Become a Seller</span>
-                        <span>Community Standards</span>
+                        {[
+                            "Customer Success Stories",
+                            "Community Hub",
+                            "Forum",
+                            "Events",
+                            "Blog",
+                            "Influencers",
+                            "Affiliates",
+                            "Podcast",
+                            "Invite a Friend",
+                            "Become a Seller",
+                            "Community Standards"
+                        ].map((text, index) => (
+                            <span key={`community-${index}`}>{text}</span>
+                        ))}
                     </div>
                     <div className="item">
-                        <h2>More From Fiverr</h2>
-                        <span>Fiverr Enterprise</span>
-                        <span> Fiverr Business</span>
-                        <span>Fiverr Pro</span>
-                        <span> Fiverr Logo Maker</span>
-                        <span> Get Inspired </span>
-                        <span>Fiverr Select</span>
-                        <span>ClearVoice</span>
-                            Content Marketing
-                        <span>Fiverr Workspace</span>
-                            Invoice Software
-                        <span>Learn</span>
-                            Online Courses
-                        <span> Working Not Working</span>
+                        <h2>More From Freelance</h2>
+                        {[
+                            "Freelance Enterprise",
+                            "Freelance Business",
+                            "Freelance Pro",
+                            "Freelance Logo Maker",
+                            "Get Inspired",
+                            "Freelance Select",
+                            "ClearVoice Content Marketing",
+                            "Freelance Workspace Invoice Software",
+                            "Learn Online Courses",
+                            "Working Not Working"
+                        ].map((text, index) => (
+                            <span key={`more-${index}`}>{text}</span>
+                        ))}
                     </div>
                 </div>
                 <hr />
                 <div className="bottom">
                     <div className="left">
-                        <h2>fiverr</h2>
-                        <span>© Fiverr International Ltd. 2023</span>
+                        <h2>Freelance Hub!</h2>
+                        <span>© Freelance International Ltd. 2025</span>
                     </div>
                     <div className="right">
                         <div className="social">
-                            <a href="https://twitter.com/"> <img src="/images/twitter.png" alt=""  /></a>
-                            <a href="https://www.facebook.com/"> <img src="/images/facebook.png" alt=""  /></a>
-                            <a href="https://www.linkedin.com/in/vivek-prajapati-993867266?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app "><img src="/images/linkedin.png" alt=""  /></a>
-                            <a href="https://www.pinterest.com//"> <img src="/images/pinterest.png" alt=""  /></a>
-                            <a href="https://www.instagram.com/"> <img src="/images/instagram.png" alt=""  /></a> 
+                            {[
+                                { url: "https://twitter.com/", img: "/images/twitter.png" },
+                                { url: "https://www.facebook.com/", img: "/images/facebook.png" },
+                                { url: "https://www.linkedin.com/in/vivek-prajapati-993867266", img: "/images/linkedin.png" },
+                                { url: "https://www.pinterest.com/", img: "/images/pinterest.png" },
+                                { url: "https://www.instagram.com/", img: "/images/instagram.png" }
+                            ].map((social, index) => (
+                                <a href={social.url} key={`social-${index}`}>
+                                    <img src={social.img} alt="" />
+                                </a>
+                            ))}
                         </div>
                         <div className="link">
                             <img src="/images/language.png" alt="" />
                             <span>English</span>
                         </div>
                         <div className="link">
-                            <img src="/images/coin.png" alt="" />
-                            <span>USD</span>
+                            <img src="/images/coin1.png" alt="" />
+                            <span>INR</span>
                         </div>
                         <img src="/images/accessibility.png" alt="" />
-                        
                     </div>
                 </div>
             </div>
         </div>
-    ]);
+    );
 }
+
 export default Footer;

@@ -115,7 +115,7 @@ const Register = () => {
           <input
             name="phone"
             type="text"
-            placeholder="+1 234 567 89"
+            placeholder="+916203059664"
             onChange={handlechange}
           />
           <label htmlFor="">Description</label>

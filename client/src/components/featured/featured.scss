@@ -5,19 +5,28 @@
   color: white;
   overflow: hidden;
   background-position: center;
-  background-image: url('hero2.webp');
-  // animation: change  infinite;
-  // animation-duration: 60s;
-  // background-repeat: no-repeat;
+  background-color: #1dbf73; /* Fallback color */
   background-size: cover;
-  background-position: center;
-  animation-delay: 0ms;
+  transition: background-image 1s ease-in-out;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
 
   .container {
     width: 1400px;
     display: flex;
     align-items: center;
-    position: absolute;
+    position: relative;
+    z-index: 2;
 
     .left {
       margin-top: 45px;
@@ -27,6 +36,7 @@
 
       h1 {
         font-size: 50px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 
         span {
           font-style: italic;
@@ -95,6 +105,7 @@
           background-color: transparent;
           font-size: 14px;
           font-family: 'Montserrat', 'sans-serif';
+          transition: all 0.3s ease;
 
           &:hover {
             background: white;
@@ -104,28 +115,28 @@
       }
     }
   }
-}
 
-@keyframes change {
-  0% {
-    background-image: url('hero1.webp');
-  }
-  20% {
-    background-image: url('hero2.webp');
-  }
-  40% {
-    background-image: url('hero3.webp');
-  }
-
-  60% {
-    background-image: url('hero4.webp');
-  }
-
-  80% {
-    background-image: url('hero5.webp');
-  }
-
-  100% {
-    background-image: url('hero6.webp');
+  .bg-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 3;
+    
+    span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &.active {
+        background-color: white;
+        transform: scale(1.2);
+      }
+    }
   }
 }

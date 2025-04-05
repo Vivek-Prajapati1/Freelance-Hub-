@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './orders.scss';
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
 
 const Orders = () => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     const navigate = useNavigate();
+    const queryClient = useQueryClient();
+    
+    // Refresh gigs data when orders page loads
+    useEffect(() => {
+        queryClient.invalidateQueries(['myGigs']);
+        queryClient.invalidateQueries(['gigs']);
+    }, [queryClient]);
+    
     const { isLoading, error, data } = useQuery({
         queryKey: ['orders'],
         queryFn: () =>
@@ -84,7 +92,7 @@ const Orders = () => {
                                         <img src={order.img || '/images/noimage.png'} alt={order.title} className="img" />
                                     </td>
                                     <td>{order.title}</td>
-                                    <td>${order.price}</td>
+                                    <td>&#8377;{order.price}</td>
                                     <td>
                                         <img 
                                             className="message" 

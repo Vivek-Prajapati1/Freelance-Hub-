@@ -79,6 +79,9 @@ const Add = () => {
                             <option value="Design">Design</option>
                             <option value="Web developer">Web Developer</option>
                             <option value="Animation">Animation</option>
+                            <option value="Animation">WordPress</option>
+                            <option value="Animation">Logo Design</option>
+                            <option value="Animation">AI Services</option>
                             <option value="Music">App Devloper</option>
                             <option value="Music">Software Devloper</option>
                             <option value="Music">Vedio Editor</option>

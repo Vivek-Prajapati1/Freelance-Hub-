@@ -153,7 +153,7 @@ const Gig = () => {
                         <button onClick={handleEdit} className="edit-button">Edit Gig</button>
                     ) : (
                         <Link to={`/pay/${id}`}>
-                            <button class= "btn">Continue</button>
+                            <button className="btn">Continue</button>
                         </Link>
                     )}
                 </div>
