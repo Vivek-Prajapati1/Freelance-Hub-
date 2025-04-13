@@ -14,9 +14,9 @@ import Pay from './pages/pay/Pay';
 import Success from './pages/success/Success';
 import EditGig from './pages/editGig/EditGig';
 import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
+  Routes,
+  Route,
+  BrowserRouter as Router
 } from "react-router-dom";
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
@@ -26,93 +26,47 @@ import {
 } from '@tanstack/react-query'
 import BecomeSeller from './components/becomeSeller/BecomeSeller';
 import BecomeSeller2 from './components/becomeSeller2/BecomeSeller2';
+import AdminLogin from './pages/admin/AdminLogin';
+import AdminRegister from './pages/admin/AdminRegister';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminRoute from './components/routing/AdminRoute';
+import './utils/axiosConfig';
+import AdminConversation from './pages/admin/AdminConversation';
 
 function App() {
   const queryClient = new QueryClient();
-  const Layout = () => {
-    return (
-      <QueryClientProvider client={queryClient} key={55}>
-        <div className='app'>
-          <Navbar key={3} />
-          <Outlet key={5454} />
-          <hr></hr>
-          <Footer key={6563}/>
-        </div>
-      </QueryClientProvider>
-    )
-  }
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Layout></Layout>,
-      children: [
-        {
-          path: "/",
-          element: <Home />
-        },
-        {
-          path: "/gigs",
-          element: <Gigs></Gigs>
-        },
-        {
-          path: "gig/:id",
-          element: <Gig />
-        },
-        {
-          path: "/orders",
-          element: <Orders />
-        },
-        {
-          path: "/mygigs",
-          element: <MyGigs />
-        },
-        {
-          path: "/add",
-          element: <Add />
-        },
-        {
-          path: "/messages",
-          element: <Messages />
-        },
-        {
-          path: "/message/:id",
-          element: <Message />
-        },
-        {
-          path: "/login",
-          element: <Login />
-        },
-        {
-          path: "/register",
-          element: <Register />
-        },
-        {
-          path: "/pay/:id",
-          element: <Pay />
-        },
-        {
-          path: "/success",
-          element: <Success />
-        },
-        {
-          path: "/becomeSeller",
-          element: <BecomeSeller />
-        },
-        {
-          path: "/becomeSeller2",
-          element: <BecomeSeller2 />
-        },
-        {
-          path: "/edit-gig/:id",
-          element: <EditGig />
-        }
-      ]
-    }
-  ]);
+  
   return (
-    [
-      <RouterProvider key={1} router={router} />
-    ]
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <div className='app'>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/gigs" element={<Gigs />} />
+            <Route path="/gig/:id" element={<Gig />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/mygigs" element={<MyGigs />} />
+            <Route path="/add" element={<Add />} />
+            <Route path="/messages" element={<Messages />} />
+            <Route path="/message/:id" element={<Message />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/pay/:id" element={<Pay />} />
+            <Route path="/success" element={<Success />} />
+            <Route path="/becomeSeller" element={<BecomeSeller />} />
+            <Route path="/becomeSeller2" element={<BecomeSeller2 />} />
+            <Route path="/admin/register" element={<AdminRegister />} />
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+            <Route path="/admin/conversation/:id" element={<AdminRoute><AdminConversation /></AdminRoute>} />
+            <Route path="/edit-gig/:id" element={<EditGig />} />
+          </Routes>
+          <hr />
+          <Footer />
+        </div>
+      </Router>
+    </QueryClientProvider>
   );
 }
 

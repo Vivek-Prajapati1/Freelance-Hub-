@@ -60,7 +60,7 @@ const Navbar = () => {
             <div className="container">
                 <div className="logo">
                     <Link to='/' className='link'>
-                        <span className='log'>Freelance Hub</span>
+                        <span className='log'>Freelance Connect</span>
                     </Link>
                     <span className='dot'>!</span>
                 </div>

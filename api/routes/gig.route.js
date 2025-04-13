@@ -6,7 +6,7 @@ import path from 'path';
 
 const router = express.Router();
 
-// Configure multer for file upload
+// Configure multer 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'uploads/');

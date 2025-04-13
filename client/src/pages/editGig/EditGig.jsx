@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import newRequest from '../../utils/newRequest';
+import upload from '../../utils/upload';
 import './EditGig.scss';
 
 const EditGig = () => {
@@ -11,11 +12,18 @@ const EditGig = () => {
   const [loading, setLoading] = useState(false);
   const [coverImage, setCoverImage] = useState(null);
   const [galleryImages, setGalleryImages] = useState([]);
+  const [features, setFeatures] = useState([]);
 
   const { data: gig, isLoading } = useQuery({
     queryKey: ['gig', id],
     queryFn: () => newRequest.get(`/gigs/single/${id}`).then((res) => res.data),
   });
+
+  useEffect(() => {
+    if (gig) {
+      setFeatures(gig.features || []);
+    }
+  }, [gig]);
 
   const mutation = useMutation({
     mutationFn: (formData) => {
@@ -50,39 +58,40 @@ const EditGig = () => {
     setLoading(true);
     setError('');
 
-    const formData = new FormData();
-    
-    // Add non-file fields
-    formData.append('title', e.target.title.value);
-    formData.append('desc', e.target.desc.value);
-    formData.append('cat', e.target.category.value);
-    formData.append('price', e.target.price.value);
-    formData.append('sortTitle', e.target.shortTitle.value);
-    formData.append('sortDesc', e.target.shortDesc.value);
-    formData.append('deliveryTime', e.target.deliveryTime.value);
-    formData.append('rivisonNumber', e.target.revisionNumber.value);
-    formData.append('totalStars', gig.totalStars);
-    formData.append('starNumber', gig.starNumber);
-    formData.append('sales', gig.sales);
-
-    // Handle features array
-    const features = Array.from(e.target.querySelectorAll('input[name="features"]')).map(input => input.value);
-    features.forEach((feature, index) => {
-      formData.append(`features[${index}]`, feature);
-    });
-
-    // Handle file uploads
-    if (coverImage) {
-      formData.append('cover', coverImage);
-    }
-
-    galleryImages.forEach((image, index) => {
-      if (image) {
-        formData.append('images', image);
-      }
-    });
-
     try {
+      const formData = new FormData();
+      
+      // Add non-file fields
+      formData.append('title', e.target.title.value);
+      formData.append('desc', e.target.desc.value);
+      formData.append('cat', e.target.category.value);
+      formData.append('price', e.target.price.value);
+      formData.append('sortTitle', e.target.shortTitle.value);
+      formData.append('sortDesc', e.target.shortDesc.value);
+      formData.append('deliveryTime', e.target.deliveryTime.value);
+      formData.append('rivisonNumber', e.target.revisionNumber.value);
+      formData.append('totalStars', gig.totalStars);
+      formData.append('starNumber', gig.starNumber);
+      formData.append('sales', gig.sales);
+
+      // Handle features array
+      features.forEach((feature, index) => {
+        formData.append(`features[${index}]`, feature);
+      });
+
+      // Handle file uploads
+      if (coverImage) {
+        const coverUrl = await upload(coverImage);
+        formData.append('cover', coverUrl);
+      }
+
+      for (const image of galleryImages) {
+        if (image) {
+          const imageUrl = await upload(image);
+          formData.append('images', imageUrl);
+        }
+      }
+
       await mutation.mutateAsync(formData);
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong!');
@@ -98,7 +107,7 @@ const EditGig = () => {
   return (
     <div className="editGig">
       <div className="container">
-        <h1>Edit Gig</h1>
+        <h1> <b>Edit Gig</b></h1>
         {error && <div className="error">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="sections">
@@ -146,15 +155,24 @@ const EditGig = () => {
                     accept="image/*" 
                     onChange={handleCoverImageChange}
                   />
-                  <label htmlFor="">Images</label>
-                  {gig.images.map((image, index) => (
-                    <input 
-                      key={index} 
-                      type="file" 
-                      name="images" 
-                      accept="image/*"
-                      onChange={(e) => handleGalleryImageChange(e, index)}
-                    />
+                  {gig.cover && (
+                    <div className="preview">
+                      <img src={gig.cover} alt="Current cover" />
+                    </div>
+                  )}
+                  <label htmlFor="">Gallery Images</label>
+                  {gig.images && gig.images.map((image, index) => (
+                    <div key={index} className="image-input">
+                      <input 
+                        type="file" 
+                        name="images" 
+                        accept="image/*"
+                        onChange={(e) => handleGalleryImageChange(e, index)}
+                      />
+                      <div className="preview">
+                        <img src={image} alt={`Gallery ${index + 1}`} />
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -206,15 +224,27 @@ const EditGig = () => {
                 required
               />
               <label htmlFor="">Add Features</label>
-              {gig.features.map((feature, index) => (
+              {features.map((feature, index) => (
                 <input
                   key={index}
                   type="text"
                   name="features"
                   placeholder="e.g. page design"
                   defaultValue={feature}
+                  onChange={(e) => {
+                    const newFeatures = [...features];
+                    newFeatures[index] = e.target.value;
+                    setFeatures(newFeatures);
+                  }}
                 />
               ))}
+              <button
+                type="button"
+                onClick={() => setFeatures([...features, ''])}
+                className="add-feature"
+              >
+                Add New Feature
+              </button>
             </div>
           </div>
         </form>

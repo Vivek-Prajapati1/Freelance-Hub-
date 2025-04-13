@@ -8,6 +8,7 @@ import orderRoute from './routes/order.route.js';
 import conversationRoute from './routes/conversation.route.js';
 import messageRoute from './routes/message.route.js';
 import authRoute from './routes/auth.route.js';
+import adminRoute from './routes/admin.route.js';
 import cookieParser from "cookie-parser";
 import cors from 'cors';
 import path from 'path';
@@ -34,6 +35,7 @@ app.use(cookieParser());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/api/auth/', authRoute);
+app.use('/api/admin', adminRoute);
 app.use('/api/users', userRoute);
 app.use('/api/gigs', gigRoute);
 app.use('/api/reviews', reviewRoute);

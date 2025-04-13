@@ -1,4 +1,3 @@
-
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
@@ -10,11 +9,13 @@ const ConversationSchema = new Schema(
       unique: true,
     },
     sellerId: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: 'user',
       required: true,
     },
     buyerId: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: 'user',
       required: true,
     },
     readBySeller: {

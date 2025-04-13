@@ -25,7 +25,7 @@ Welcome to Freelance Hub!, a dynamic freelance marketplace designed to connect c
 - **Media Storage:** Seamlessly store images and videos using Cloudinary for efficient content management.
 
 ## Demo
-
+    
 ## Tech Stack
 - SCSS
 - React.js
@@ -40,7 +40,7 @@ Welcome to Freelance Hub!, a dynamic freelance marketplace designed to connect c
 1. Clone the repository:
    ```bash
    git clone https://github.com/Vivek-Prajapati1/Freelance-Hub-.git
-   cd fiverr-clone
+   cd freelance hub!
    cd client
    npm install
    cd..

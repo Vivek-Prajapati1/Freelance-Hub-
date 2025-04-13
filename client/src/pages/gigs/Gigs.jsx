@@ -123,13 +123,13 @@ const Gigs = () => {
     
     // Dynamic title based on search query
     const getTitle = () => {
-        return searchQuery ? searchQuery : "All Gigs Avaliable";
+        return searchQuery ? searchQuery : "All Gigs Available";
     }
 
     return (
         <div className="gigs">
             <div className="container">
-                <span className="breadcrumbs">FIVERR &gt; GRAPHICS & DESIGN &gt;</span>
+                <span className="breadcrumbs">Freelance hub &gt; GRAPHICS & DESIGN &gt;</span>
                 <h1>{getTitle()}</h1>
                 <p>Explore the boundaries of art and technology with Fiverr's AI artists</p>
                 <div className="menu">
