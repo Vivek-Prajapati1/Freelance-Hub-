@@ -25,6 +25,8 @@ Welcome to Freelance Hub!, a dynamic freelance marketplace designed to connect c
 - **Media Storage:** Seamlessly store images and videos using Cloudinary for efficient content management.
 
 ## Demo
+
+https://www.linkedin.com/posts/vivek-prajapati1_mern-webdevelopment-freelanceconnect-activity-7317471726211096576-yCH0?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEFEWr8Bu33qwk2Q3taQJ3EH-FOJVVJMia8
     
 ## Tech Stack
 - SCSS
